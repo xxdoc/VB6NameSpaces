@@ -1,40 +1,132 @@
 VERSION 1.0 CLASS
 BEGIN
-  MultiUse = -1  'True
-  Persistable = 0  'NotPersistable
-  DataBindingBehavior = 0  'vbNone
-  DataSourceBehavior  = 0  'vbNone
-  MTSTransactionMode  = 0  'NotAnMTSObject
+   MultiUse = -1
+   Persistable = 0
+   DataBindingBehavior = 0
+   DataSourceBehavior = 0
+   MTSTransactionMode = 0
 END
 Attribute VB_Name = "Clipboard"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+
+
 Option Explicit
-Private Const IMAGE_BITMAP        As Long = 0
-Private Const LR_COPYRETURNORG    As Long = &H4
-Private Const LR_CREATEDIBSECTION As Long = &H2000
-Private Const GMEM_DDESHARE = &H2000
-Private Const GMEM_MOVEABLE = &H2
-Private Const CF_TEXT = 1
-Private Const CF_BITMAP = 2
-Private Const NO_CB_OPEN_ERROR = 0
-Private Const NO_CB_OPENED = 0
-Private Const NO_CB_FORMAT_AVAILABLE = 0
-Private Const NO_CB_VIWER = 0
+
+'VERSION 1.0 CLASS
+'BEGIN
+'  MultiUse = -1  'True
+'  Persistable = 0  'NotPersistable
+'  DataBindingBehavior = 0  'vbNone
+'  DataSourceBehavior  = 0  'vbNone
+'  MTSTransactionMode  = 0  'NotAnMTSObject
+'END
+'Attribute VB_Name = "Clipboard"
+'Attribute VB_GlobalNameSpace = False
+'Attribute VB_Creatable = True
+'Attribute VB_PredeclaredId = False
+'Attribute VB_Exposed = False
+'Attribute VB_Ext_KEY = "SavedWithClassBuilder6" ,"Yes"
+'Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
+'Option Explicit
+Private Const IMAGE_BITMAP            As Long = 0
+Private Const LR_COPYRETURNORG        As Long = &H4
+Private Const LR_CREATEDIBSECTION     As Long = &H2000
+Private Const GMEM_DDESHARE           As Long = &H2000
+Private Const GMEM_MOVEABLE           As Long = &H2
+Private Const NO_CB_OPEN_ERROR        As Long = 0
+Private Const NO_CB_OPENED            As Long = 0
+Private Const NO_CB_FORMAT_AVAILABLE  As Long = 0
+Private Const NO_CB_VIWER             As Long = 0
+Private Const CF_ACCEPT               As Long = &H0
+Private Const CF_ANSIONLY             As Long = &H400
+Private Const CF_APPLY                As Long = &H200
+Private Const CF_BITMAP               As Long = 2
+Private Const CF_BOTH                 As Long = (&H1 Or &H2)
+Private Const CF_BOTTOMUP_DIB         As Long = 8
+Private Const CF_CONVERTONLY          As Long = &H100
+Private Const CF_DEFER                As Long = &H2
+Private Const CF_DIB                  As Long = 8
+Private Const CF_DIBV5                As Long = 17
+Private Const CF_DIF                  As Long = 5
+Private Const CF_DISABLEACTIVATEAS    As Long = &H40
+Private Const CF_DISABLEDISPLAYASICON As Long = &H20
+Private Const CF_DSPBITMAP            As Long = &H82
+Private Const CF_DSPENHMETAFILE       As Long = &H8E
+Private Const CF_DSPMETAFILEPICT      As Long = &H83
+Private Const CF_DSPTEXT              As Long = &H81
+Private Const CF_EFFECTS              As Long = &H100
+Private Const CF_ENABLEHOOK           As Long = &H8
+Private Const CF_ENABLETEMPLATE       As Long = &H10
+Private Const CF_ENABLETEMPLATEHANDLE As Long = &H20
+Private Const CF_ENHMETAFILE          As Long = 14
+Private Const CF_FIXEDPITCHONLY       As Long = &H4000
+Private Const CF_FORCEFONTEXIST       As Long = &H10000
+Private Const CF_GDIOBJFIRST          As Long = &H300
+Private Const CF_GDIOBJLAST           As Long = &H3FF
+Private Const CF_HDROP                As Long = 15
+Private Const CF_HIDECHANGEICON       As Long = &H80
+Private Const CF_INITTOLOGFONTSTRUCT  As Long = &H40
+Private Const CF_JPEG                 As Long = 19
+Private Const CF_LIMITSIZE            As Long = &H2000
+Private Const CF_LOCALE               As Long = 16
+Private Const CF_MAX                  As Long = 17
+Private Const CF_METAFILEPICT         As Long = 3
+Private Const CF_MULTI_TIFF           As Long = 22
+Private Const CF_NOFACESEL            As Long = &H80000
+Private Const CF_NOOEMFONTS           As Long = &H800
+Private Const CF_NOSCRIPTSEL          As Long = &H800000
+Private Const CF_NOSIMULATIONS        As Long = &H1000
+Private Const CF_NOSIZESEL            As Long = &H200000
+Private Const CF_NOSTYLESEL           As Long = &H100000
+Private Const CF_NOVECTORFONTS        As Long = &H800
+Private Const CF_NOVERTFONTS          As Long = &H1000000
+Private Const CF_NULL                 As Long = 0
+Private Const CF_OEMTEXT              As Long = 7
+Private Const CF_OWNERDISPLAY         As Long = &H80
+Private Const CF_PALETTE              As Long = 9
+Private Const CF_PENDATA              As Long = 10
+Private Const CF_PRINTERFONTS         As Long = &H2
+Private Const CF_PRIVATEFIRST         As Long = &H200
+Private Const CF_PRIVATELAST          As Long = &H2FF
+Private Const CF_REJECT               As Long = &H1
+Private Const CF_RETEXTOBJ            As String = "RichEdit Text and Objects"
+Private Const CF_RIFF                 As Long = 11
+Private Const CF_RTF                  As String = "Rich Text Format"
+Private Const CF_RTFNOOBJS            As String = "Rich Text Format Without Objects"
+Private Const CF_SCALABLEONLY         As Long = &H20000
+Private Const CF_SCREENFONTS          As Long = &H1
+Private Const CF_SCRIPTSONLY          As Long = CF_ANSIONLY
+Private Const CF_SELECTACTIVATEAS     As Long = &H10
+Private Const CF_SELECTCONVERTTO      As Long = &H8
+Private Const CF_SELECTSCRIPT         As Long = &H400000
+Private Const CF_SETACTIVATEDEFAULT   As Long = &H4
+Private Const CF_SETCONVERTDEFAULT    As Long = &H2
+Private Const CF_SHOWHELP             As Long = &H4
+Private Const CF_SHOWHELPBUTTON       As Long = &H1
+Private Const CF_SYLK                 As Long = 4
+Private Const CF_TEXT                 As Long = 1
+Private Const CF_TIFF                 As Long = 6
+Private Const CF_TOPDOWN_DIB          As Long = 20
+Private Const CF_TTONLY               As Long = &H40000
+Private Const CF_UNICODETEXT          As Long = 13
+Private Const CF_USESTYLE             As Long = &H80
+Private Const CF_WAVE                 As Long = 12
+Private Const CF_WYSIWYG              As Long = &H8000
 Private Type OLEPIC
-    Size As Long
-    tType As Long
-    hBmp As Long
-    hPal As Long
-    Reserved As Long
+   Size As Long
+   tType As Long
+   hBmp As Long
+   hPal As Long
+   Reserved As Long
 End Type
 Private Type GUID
-    Data1 As Long
-    Data2 As Integer
-    Data3 As Integer
-    Data4(7) As Byte
+   Data1 As Long
+   Data2 As Integer
+   Data3 As Integer
+   Data4(7) As Byte
 End Type
 Private Declare Function apiGetOpenClipboardWindow Lib "user32" Alias "GetOpenClipboardWindow" () As Long
 Private Declare Function apiOpenClipboard Lib "user32" Alias "OpenClipboard" (ByVal hwnd As Long) As Long
@@ -59,286 +151,100 @@ Private Declare Function apiGlobalFree Lib "kernel32" Alias "GlobalFree" (ByVal 
 Private Declare Function apiGlobalLock Lib "kernel32" Alias "GlobalLock" (ByVal hMem As Long) As Long
 Private Declare Function apiGlobalUnlock Lib "kernel32" Alias "GlobalUnlock" (ByVal hMem As Long) As Long
 Private Declare Function apiGlobalSize Lib "kernel32" Alias "GlobalSize" (ByVal hMem As Long) As Long
-Private Declare Sub apiMoveMemory Lib "kernel32" Alias "RtlMoveMemory" (ByRef Destination As Any, ByRef source As Any, ByVal length As Long)
-Private Enum eCBERRORMSG
-    CB_OPEN_ERROR = 0
-    CB_NO_BITMAP_FORMAT_AVAILABLE = 1
-    CB_NO_TEXT_FORMAT_AVAILABLE = 2
-    CB_ALREADY_OPEN = 3
-End Enum
-Private sME(3) As String
-Private Sub CBEnumerateFormats()
-    Dim fmt  As Long
-    Dim nfmt As Long
-    Dim s    As String * 256
-    If apiGetOpenClipboardWindow() = NO_CB_OPENED Then
-        If apiOpenClipboard(0) <> NO_CB_OPEN_ERROR Then
-            fmt = apiEnumClipboardFormats(&H0)
-            Do
-                nfmt = apiEnumClipboardFormats(fmt)
-                If nfmt = NO_CB_OPEN_ERROR Then
-                    Exit Do
-                Else
-                    fmt = nfmt
-                    s = String(256, 0)
-                    Call apiGetClipboardFormatName(fmt, ByVal s, 256)
-                    'List1.AddItem CStr(nfmt) + " = " + s + vbCrLf
-                End If
-            Loop
-            Call apiCloseClipboard
-            Exit Sub
-        Else
-            Messagebox.Show CB_OPEN_ERROR
-        End If
-    Else
-        Messagebox.Show CB_ALREADY_OPEN
-    End If
+Private Declare Sub apiMoveMemoryStringLong Lib "kernel32" Alias "RtlMoveMemory" (ByRef Destination As String, ByRef source As Long, ByVal Length As Long)
+Private Declare Sub apiMoveMemoryLongString Lib "kernel32" Alias "RtlMoveMemory" (ByRef Destination As Long, ByRef source As String, ByVal Length As Long)
+Private Const vbPicTypeBitmap As Long = 1
+Private Sub EnumClipboardFormats()
+   On Error Resume Next
+   Dim cfs  As Long
+   Dim ncfs As Long
+   Dim s    As String * 260
+   If apiGetOpenClipboardWindow() <> NO_CB_OPENED Then Exit Sub
+   If apiOpenClipboard(0) = NO_CB_OPEN_ERROR Then Exit Sub
+   cfs = apiEnumClipboardFormats(&H0)
+   Do
+      ncfs = apiEnumClipboardFormats(cfs)
+      If ncfs = NO_CB_OPEN_ERROR Then Exit Do
+      cfs = ncfs
+      s = String(260, 0)
+      Call apiGetClipboardFormatName(cfs, ByVal s, 260)
+   Loop
+   Call apiCloseClipboard
 End Sub
 Friend Sub SetText(ByVal Text As String)
-    Dim hMem       As Long
-    Dim hPtr       As Long
-    Dim lLenBuffer As Long
-    Dim s          As String
-    If apiGetOpenClipboardWindow() = NO_CB_OPENED Then
-        If apiOpenClipboard(0) <> NO_CB_OPEN_ERROR Then
-            Call apiEmptyClipboard
-            lLenBuffer = Len(Text) + 1
-            s = String(lLenBuffer, 0)
-            Mid(s, 1, lLenBuffer - 1) = Text
-            hMem = apiGlobalAlloc(GMEM_MOVEABLE Or GMEM_DDESHARE, lLenBuffer)
-            hPtr = apiGlobalLock(hMem)
-            Call apiMoveMemory(ByVal hPtr, ByVal s, lLenBuffer)
-            Call apiGlobalUnlock(hMem)
-            Call apiSetClipboardData(CF_TEXT, hMem)
-            Call apiCloseClipboard
-        Else
-            Messagebox.Show CB_OPEN_ERROR
-        End If
-    Else
-        Messagebox.Show CB_ALREADY_OPEN
-    End If
-    '    GlobalUnlock hMem ' Never leave hMem Locked with SetClipboardData
-    '    GlobalFree hMem   ' Never Free hMem with SetClipboardData
-    ' Uses GMEM_MOVEABLE Or GMEM_DDESHARE
+   On Error Resume Next
+   If apiGetOpenClipboardWindow() <> NO_CB_OPENED Then Exit Sub
+   If apiOpenClipboard(0) = NO_CB_OPEN_ERROR Then Exit Sub
+   Dim ga As Long
+   Dim hPtr As Long
+   Dim buff As Long
+   Dim s    As String
+   Call apiEmptyClipboard
+   buff = Len(Text) + 1
+   s = String(buff, 0)
+   Mid(s, 1, buff - 1) = Text
+   ga = apiGlobalAlloc(GMEM_MOVEABLE Or GMEM_DDESHARE, buff)
+   hPtr = apiGlobalLock(ga)
+   Call apiMoveMemoryLongString(hPtr, s, buff)
+   Call apiGlobalUnlock(ga)
+   Call apiSetClipboardData(CF_TEXT, ga)
+   Call apiCloseClipboard
 End Sub
 Friend Function GetText() As String
-    Dim hMem       As Long
-    Dim lLenBuffer As Long
-    Dim s          As String
-    If apiGetOpenClipboardWindow() = NO_CB_OPENED Then
-        If apiOpenClipboard(0) <> NO_CB_OPEN_ERROR Then
-            If apiIsClipboardFormatAvailable(CF_TEXT) <> NO_CB_FORMAT_AVAILABLE Then
-                hMem = apiGetClipboardData(CF_TEXT)
-                lLenBuffer = apiGlobalSize(hMem)
-                s = String(lLenBuffer, 0)
-                Call apiMoveMemory(ByVal s, ByVal hMem, lLenBuffer)
-                Call apiCloseClipboard
-                If s = "" Then: Exit Function
-                GetText = Left(s, InStr(s, Chr(0)) - 1)
-                Exit Function
-            Else
-                Call apiCloseClipboard
-                Messagebox.Show CB_NO_TEXT_FORMAT_AVAILABLE
-            End If
-        Else
-            Messagebox.Show CB_OPEN_ERROR
-        End If
-    Else
-        Messagebox.Show CB_ALREADY_OPEN
-    End If
+   On Error Resume Next
+   If apiGetOpenClipboardWindow() <> NO_CB_OPENED Then Exit Function
+   If apiOpenClipboard(0) = NO_CB_OPEN_ERROR Then Exit Function
+   If apiIsClipboardFormatAvailable(CF_TEXT) = NO_CB_FORMAT_AVAILABLE Then Call apiCloseClipboard: Exit Function
+   Dim ga As Long
+   Dim buff As Long
+   Dim s    As String
+   ga = apiGetClipboardData(CF_TEXT)
+   buff = apiGlobalSize(ga)
+   s = String(buff, 0)
+   Call apiMoveMemoryStringLong(s, ga, buff)
+   Call apiCloseClipboard
+   If s = "" Then GetText = "": Exit Function
+   GetText = Left(s, InStr(s, Chr(0)) - 1)
 End Function
 Friend Sub SetPicture(ByVal hPic As Long)
-    Dim hMem As Long
-    If apiGetOpenClipboardWindow() = NO_CB_OPENED Then
-        If apiOpenClipboard(0) <> NO_CB_OPEN_ERROR Then
-            Call apiEmptyClipboard
-            hMem = apiCopyImage(hPic, IMAGE_BITMAP, 0, 0, LR_COPYRETURNORG Or LR_CREATEDIBSECTION)
-            Call apiSetClipboardData(CF_BITMAP, hMem)
-            Call apiCloseClipboard
-        Else
-            Messagebox.Show CB_OPEN_ERROR
-        End If
-    Else
-        Messagebox.Show CB_ALREADY_OPEN
-    End If
+   On Error Resume Next
+   If apiGetOpenClipboardWindow() <> NO_CB_OPENED Then Exit Sub
+   If apiOpenClipboard(0) = NO_CB_OPEN_ERROR Then Exit Sub
+   Dim ga As Long
+   Call apiEmptyClipboard
+   ga = apiCopyImage(hPic, IMAGE_BITMAP, 0, 0, LR_COPYRETURNORG Or LR_CREATEDIBSECTION)
+   Call apiSetClipboardData(CF_BITMAP, ga)
+   Call apiCloseClipboard
 End Sub
 Friend Function GetPicture() As Object
-    Dim hMem          As Long
-    Dim r             As Long
-    Dim IID_IDispatch As GUID
-    Dim OPic          As OLEPIC
-    Dim IObj          As Object
-    If apiGetOpenClipboardWindow() = NO_CB_OPENED Then
-        If apiOpenClipboard(0) <> NO_CB_OPEN_ERROR Then
-            If apiIsClipboardFormatAvailable(CF_BITMAP) <> NO_CB_FORMAT_AVAILABLE Then
-                hMem = apiGetClipboardData(CF_BITMAP)
-                With IID_IDispatch
-                    .Data1 = &H20400
-                    .Data4(0) = &HC0
-                    .Data4(7) = &H46
-                End With
-                With OPic
-                    .Size = Len(OPic)        'Lunghezza della struttura.
-                    .tType = vbPicTypeBitmap 'Tipo dell'immagine (bitmap).
-                    .hBmp = hMem             'L'handle dell'immagine.
-                    '                    .hPal = hMem + 40       ' 40 Len BITMAP structure before palette
-                End With
-                r = apiOleCreatePictureIndirect(OPic, IID_IDispatch, 0, IObj)
-                Call apiCloseClipboard
-                Set GetPicture = IObj
-                Set IObj = Nothing
-                Exit Function
-            Else
-                Call apiCloseClipboard
-                Messagebox.Show CB_NO_BITMAP_FORMAT_AVAILABLE
-            End If
-        Else
-            Messagebox.Show CB_OPEN_ERROR
-        End If
-    Else
-        Messagebox.Show CB_ALREADY_OPEN
-    End If
-    Set IObj = Nothing
-    Set GetPicture = Nothing
+   On Error Resume Next
+   If apiGetOpenClipboardWindow() <> NO_CB_OPENED Then Exit Function
+   If apiOpenClipboard(0) = NO_CB_OPEN_ERROR Then Exit Function
+   If apiIsClipboardFormatAvailable(CF_BITMAP) = NO_CB_FORMAT_AVAILABLE Then Call apiCloseClipboard: Exit Function
+   Dim ga          As Long
+   Dim r             As Long
+   Dim IID_IDispatch As GUID
+   Dim OPic          As OLEPIC
+   Dim IObj          As Object
+   ga = apiGetClipboardData(CF_BITMAP)
+   With IID_IDispatch
+      .Data1 = &H20400
+      .Data4(0) = &HC0
+      .Data4(7) = &H46
+   End With
+   With OPic
+      .Size = Len(OPic)
+      .tType = vbPicTypeBitmap
+      
+      .hBmp = ga
+   End With
+   r = apiOleCreatePictureIndirect(OPic, IID_IDispatch, 0, IObj)
+   Call apiCloseClipboard
+   Set GetPicture = IObj
+   Set IObj = Nothing
 End Function
 Friend Function Clear()
-    Call apiEmptyClipboard  ' Clipboard.Clear
+   On Error Resume Next
+   Call apiEmptyClipboard
 End Function
-'Private Enum ClipBoardFormat
-'    CF_ACCEPT = &H0
-'    CF_ANSIONLY = &H400&
-'    CF_APPLY = &H200&
-'    CF_BITMAP = 2
-'    CF_BOTH = (CF_SCREENFONTS Or CF_PRINTERFONTS)
-'    CF_BOTTOMUP_DIB = CF_DIB
-'    CF_CONVERTONLY = &H100&
-'    CF_DEFER = &H2
-'    CF_DIB = 8
-'    CF_DIBV5 = 17
-'    CF_DIF = 5
-'    CF_DISABLEACTIVATEAS = &H40&
-'    CF_DISABLEDISPLAYASICON = &H20&
-'    CF_DSPBITMAP = &H82
-'    CF_DSPENHMETAFILE = &H8E
-'    CF_DSPMETAFILEPICT = &H83
-'    CF_DSPTEXT = &H81
-'    CF_EFFECTS = &H100&
-'    CF_ENABLEHOOK = &H8&
-'    CF_ENABLETEMPLATE = &H10&
-'    CF_ENABLETEMPLATEHANDLE = &H20&
-'    CF_ENHMETAFILE = 14
-'    CF_FIXEDPITCHONLY = &H4000&
-'    CF_FORCEFONTEXIST = &H10000
-'    CF_GDIOBJFIRST = &H300
-'    CF_GDIOBJLAST = &H3FF
-'    CF_HDROP = 15
-'    CF_HIDECHANGEICON = &H80&
-'    CF_INITTOLOGFONTSTRUCT = &H40&
-'    CF_JPEG = 19
-'    CF_LIMITSIZE = &H2000&
-'    CF_LOCALE = 16
-'    CF_MAX = 17
-'    CF_METAFILEPICT = 3
-'    CF_MULTI_TIFF = 22
-'    CF_NOFACESEL = &H80000
-'    CF_NOOEMFONTS = CF_NOVECTORFONTS
-'    CF_NOSCRIPTSEL = &H800000
-'    CF_NOSIMULATIONS = &H1000&
-'    CF_NOSIZESEL = &H200000
-'    CF_NOSTYLESEL = &H100000
-'    CF_NOVECTORFONTS = &H800&
-'    CF_NOVERTFONTS = &H1000000
-'    CF_NULL = 0
-'    CF_OEMTEXT = 7
-'    CF_OWNERDISPLAY = &H80
-'    CF_PALETTE = 9
-'    CF_PENDATA = 10
-'    CF_PRINTERFONTS = &H2
-'    CF_PRIVATEFIRST = &H200
-'    CF_PRIVATELAST = &H2FF
-'    CF_REJECT = &H1
-'    CF_RETEXTOBJ = ("RichEdit Text and Objects")
-'    CF_RIFF = 11
-'    CF_RTF = ("Rich Text Format")
-'    CF_RTFNOOBJS = ("Rich Text Format Without Objects")
-'    CF_SCALABLEONLY = &H20000
-'    CF_SCREENFONTS = &H1
-'    CF_SCRIPTSONLY = CF_ANSIONLY
-'    CF_SELECTACTIVATEAS = &H10&
-'    CF_SELECTCONVERTTO = &H8&
-'    CF_SELECTSCRIPT = &H400000
-'    CF_SETACTIVATEDEFAULT = &H4&
-'    CF_SETCONVERTDEFAULT = &H2&
-'    CF_SHOWHELP = &H4&
-'    CF_SHOWHELPBUTTON = &H1&
-'    CF_SYLK = 4
-'    CF_TEXT = 1
-'    CF_TIFF = 6
-'    CF_TOPDOWN_DIB = 20
-'    CF_TTONLY = &H40000
-'    CF_UNICODETEXT = 13
-'    CF_USESTYLE = &H80&
-'    CF_WAVE = 12
-'    CF_WYSIWYG = &H8000
-'End Enum
-'Private Sub Command1_Click()
-'    CBSetText "This is a ClipBoard Test!!!"
-'End Sub
-'Private Sub Command2_Click()
-'    List1.AddItem CBGetText()
-'    List1.ListIndex = List1.ListCount - 1
-'End Sub
-'Private Sub Command3_Click()
-'    If GetOpenClipboardWindow() = NO_CB_OPENED Then
-'        If OpenClipboard(Me.hwnd) <> NO_CB_OPEN_ERROR Then
-'            EmptyClipboard
-'            CloseClipboard
-'        End If
-'    End If
-'End Sub
-'Private Sub Command4_Click()
-'    List1.Clear
-'End Sub
-'Private Sub Command5_Click()
-'    If GetOpenClipboardWindow() = NO_CB_OPENED Then
-'        If OpenClipboard(Me.hwnd) <> NO_CB_OPEN_ERROR Then
-'            EmptyClipboard
-'            CloseClipboard
-'        End If
-'    End If
-'End Sub
-'Private Sub Command6_Click()
-'    Set Image2.Picture = CBGetPicture()
-'    Image2.Refresh
-'End Sub
-'Private Sub Command7_Click()
-'    CBSetPicture Image1.Picture.handle
-'End Sub
-'Private Sub Command8_Click()
-'    Set Image2.Picture = Nothing
-'    Image2.Refresh
-'End Sub
-'Private Sub Form_Load()
-'    '    Debug.Print RegisterClipboardFormat("GioRock Clipboard Format" + Chr$(0))
-'    '    CloseClipboard
-'    '    CBEnumerateFormats
-'    If GetOpenClipboardWindow() <> NO_CB_OPENED Then
-'        CloseClipboard
-'        SetClipboardViewer Me.hwnd
-'    End If
-'    sME(0) = "Clipboard open error!!!"
-'    sME(1) = "Not Clipboard BITMAP format available!!!"
-'    sME(2) = "Not Clipboard TEXT format available!!!"
-'    sME(3) = "Clipboard already opened by other application!!!"
-'End Sub
-'Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
-'    If GetOpenClipboardWindow() = Me.hwnd Then
-'        '        EmptyClipboard
-'        CloseClipboard
-'    End If
-'End Sub
-'Private Sub Form_Unload(Cancel As Integer)
-'    End
-'    Set Form1 = Nothing
-'End Sub
 
